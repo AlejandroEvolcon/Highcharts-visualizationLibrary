@@ -1,3 +1,29 @@
+var alignOption = [
+					{
+						value: "center",
+						label: "Align Center"
+					}, {
+						value: "left",
+						label: "Align Left"
+					}, {
+						value: "right",
+						label: "Align Right"
+					}
+				];
+
+var valignOption = [
+					{
+						value: "top",
+						label: "Align Top"
+					}, {
+						value: "bottom",
+						label: "Align Bottom"
+					}, {
+						value: "middle",
+						label: "Align Middle"
+					}
+				];
+
 var chartList = 
 	[
 		{

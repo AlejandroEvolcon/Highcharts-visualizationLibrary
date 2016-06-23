@@ -3,7 +3,9 @@ define( [
 			"text!./Highcharts-visualizationLibrary.ng.html", 
 			"css!./Highcharts-visualizationLibrary.css",
 			"./js/highcharts",
-			"./js/DataHelper"
+			"./js/DataHelper",
+			"./js/ChartList",
+			"./js/ChartProperties"
 		], function ( qlik, template ) {
 		"use strict";
 		
@@ -49,6 +51,147 @@ define( [
 
 						},
 					}
+				},
+				title : {
+					type: "items",
+					label: "In Chart Title and Subtitle",
+					items : {
+						inChartTitle: {
+							type: "string",
+							expression: "optional",
+							label: "In Chart Title",
+							defaultValue: "This Chart Title",
+							ref: "settings.titles.title"
+						},
+						AlignDropDown: {
+							type: "string",
+							component: "dropdown",
+							label: "Align",
+							options: alignOption,
+							defaultValue: "center",
+							ref: "settings.titles.align"
+						},
+						VAlignDropDown: {
+							type: "string",
+							component: "dropdown",
+							label: "Vertical Align",
+							options: valignOption,
+							defaultValue: "top",
+							ref: "settings.titles.valign"
+						},
+						FloatingCheckbox: {
+							type: "boolean",
+							component: "switch",
+							label: "Floating",
+							ref: "settings.titles.floating",
+                            options: [{
+                                        value: true,
+                                        label: "On"
+									}, {
+                                       value: false,
+                                        label: "Off"
+							        }],
+									defaultValue: false
+						},
+						Margin: {
+							type: "number",
+							expression: "optional",
+							label: "Margin",
+							defaultValue:15,
+							ref: "settings.titles.margin"
+						},
+						Color: {
+							type: "string",
+							expression: "optional",
+							label: "Color",
+							defaultValue: "#333333",
+							ref: "settings.titles.style.color"
+						},
+						FontSize: {
+							type: "string",
+							expression: "optional",
+							label: "Font",
+							defaultValue: "18px",
+							ref: "settings.titles.style.fontsize"
+						},
+						widthAdjust: {
+							type: "number",
+							expression: "optional",
+							label: "Width Adjust",
+							defaultValue: -44,
+							ref: "settings.titles.widthadjust"
+						},
+						x: {
+							type: "number",
+							expression: "optional",
+							label: "x",
+							defaultValue: 0,
+							ref: "settings.titles.x"
+						},
+
+
+						// Subtitle Section
+						inChartSubTitle: {
+							type: "string",
+							expression: "optional",
+							label: "In Chart Subtitle",
+							defaultValue: "This Chart Subtitle",
+							ref: "settings.titles.subutitle.title"
+						},
+						SubtitleAlignDropDown: {
+							type: "string",
+							component: "dropdown",
+							label: "Align",
+							options: alignOption,
+							defaultValue: "center",
+							ref: "settings.titles.subutitle.align"
+						},
+						SubtitleVAlignDropDown: {
+							type: "string",
+							component: "dropdown",
+							label: "Vertical Align",
+							options: valignOption,
+							defaultValue: "top",
+							ref: "settings.titles.subutitle.valign"
+						},
+						SubtitleloatingCheckbox: {
+							type: "boolean",
+							component: "switch",
+							label: "Floating",
+							ref: "settings.titles.subutitle.floating",
+                            options: [{
+                                        value: true,
+                                        label: "On"
+									}, {
+                                       value: false,
+                                        label: "Off"
+							        }],
+									defaultValue: false
+						},
+						SubtitleColor: {
+							type: "string",
+							expression: "optional",
+							label: "Color",
+							defaultValue: "#333333",
+							ref: "settings.titles.style.subutitle.color"
+						},
+						SubtitleFontSize: {
+							type: "string",
+							expression: "optional",
+							label: "Font",
+							defaultValue: "18px",
+							ref: "settings.titles.style.subutitle.fontsize"
+						},
+						Subtitlex: {
+							type: "number",
+							expression: "optional",
+							label: "x",
+							defaultValue: 0,
+							ref: "settings.titles.subutitle.x"
+						}
+
+
+					}
 				}
 			}
 		}
@@ -76,21 +219,9 @@ define( [
 			$("#"+layout.qInfo.qId).css("height", "100%");
 		
 			var mychart =  {
-				        chart: {
-				            plotBackgroundColor: null,
-				            plotBorderWidth: null,
-				            plotShadow: false,
-				            type: 'pie'
-				        },
-
-			        	title:
-				        {
-					        "text": "Titolo"
-					    },
-				        subtitles:
-				        {
-					                "text" : "Sottotitolo"
-					    },
+				        chart: {},
+			        	title:  {},
+				        subtitles:{},
 			            legend: {
 			                enabled: false
 			            },
@@ -118,6 +249,13 @@ define( [
         
 					};
 
+					var titles = makeTitle(layout.settings.titles);
+					mychart.title = titles[0];
+					mychart.subtitle = titles[1]
+				//	mychart.chart = makeChart(layout.settings.chart);
+					console.log(mychart);
+
+
 				/*
 					  layout.qHyperCube.qEffectiveInterColumnSortOrder : Effettivo ordine di sort tra le colonne
 					  layout.qHyperCube.qDimensionInfo  : (info sulle dimensioni) length ritorna il numero di dimensioni
@@ -138,7 +276,6 @@ define( [
                 var newDataMatrix=[];
 
                 newDataMatrix = singleDimension(layout,dimensionLabels,measureLabels,self);
-                console.log(newDataMatrix);
 /*
                 if((measureLabels.length > 1) &&(layout.secondaxis))
                 	newDataMatrix =  doubleMeasure (layout,dimensionLabels,measureLabels,self);
@@ -154,8 +291,6 @@ define( [
 
 			mychart.series[0].data = newDataMatrix;
 			
-			
-			console.log(mychart);
 			$('#'+layout.qInfo.qId).highcharts(mychart);
 		
 		};
