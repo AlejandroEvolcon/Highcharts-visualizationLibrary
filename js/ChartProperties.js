@@ -1,4 +1,34 @@
+function makeLegend(legends){
+	var legend = {};
+	var style = {};
 
+/*
+	style['cursor'] = legends.style.cursor;
+	style['fontSize'] = legends.style.fontSize;
+	style['fontWeight'] = legends.style.fontWeight;
+	legend['style'] = style;
+*/
+
+	legend['enable'] = legends.enable;
+	legend['align'] = legends.align;
+	legend['backgroundColor'] = legends.backgroundColor;
+	legend['borderColor'] = legends.borderColor;
+	legend['borderRadius'] = legends.borderRadius;
+	legend['borderWidth'] = legends.borderWidth;
+	legend['itemdistance'] = legends.itemdistance;
+	legend['itemHiddenStyle'] = legends.itemHiddenStyle;
+	legend['itemHoverStyle'] = legends.itemHoverStyle;
+	legend['itemMarginBottom'] = legends.itemMarginBottom;
+	legend['lineHeight'] = legends.lineHeight;
+	legend['padding'] = legends.padding;
+	legend['reversed'] = legends.reversed;
+	legend['rtl'] = legends.rtl;
+	legend['style'] = legends.style;
+
+
+
+	return(legend);
+}
 
 function makeTitle(titles){
 
