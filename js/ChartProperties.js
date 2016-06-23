@@ -40,6 +40,39 @@ function makeTitle(titles){
 
 function makeChart(charts){
 
+	var chartOpt={};
+	var style={};
+
+	// SubTitle Section 
+	style['color'] = charts.style.fontFamily;
+	style['fontsize'] = charts.style.fontSize;
+	chartOpt['style'] = style;
+
+	chartOpt['alignTicks'] = charts.alignticks;
+	chartOpt['animation'] = charts.animation;
+	chartOpt['backgroundColor'] = charts.backgroundColor;
+	chartOpt['borderColor'] = charts.borderColor;
+	chartOpt['borderRadius'] = charts.borderRadius;
+	chartOpt['borderWidth'] = charts.borderWidth;
+	chartOpt['className'] = charts.className;
+	chartOpt['defaultSeriesType'] = charts.defaultSeriesType;
+	chartOpt['ignoreHiddenSeries'] = charts.ignoreHiddenSeries;
+	chartOpt['inverted'] = charts.inverted;
+	chartOpt['margin'] = charts.margin;
+	chartOpt['panning'] = charts.panning;
+	chartOpt['pankey'] = charts.pankey;
+	chartOpt['pinchType'] = charts.pinchType;
+	chartOpt['plotBackgroundColor'] = charts.plotBackgroundColor;
+	chartOpt['plotBackgroundImage'] = charts.plotBackgroundImage;
+	chartOpt['plotBorderColor'] = charts.plotBorderColor;
+	chartOpt['plotBorderWidth'] = charts.plotBorderWidth;
+	chartOpt['polar'] = charts.polar;
+	chartOpt['reflow'] = charts.reflow;
+	chartOpt['selectionMarkerFill'] = charts.selectionMarkerFill;
+	chartOpt['shadow'] = charts.shadow;
+	chartOpt['showAxes'] = charts.showAxes;
+	chartOpt['type'] = charts.type;
 
 
+	return(chartOpt);
 }

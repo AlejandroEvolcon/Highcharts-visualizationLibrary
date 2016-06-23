@@ -30,84 +30,70 @@ var chartList =
 			value: "area",
 			label: "Area Chart"
 		}, {
+			value: "arearange",
+			label: "Area Range Chart"
+		}, {
+			value: "areaspline",
+			label: "Area Spline Chart"
+		}, {
+			value: "areasplinerange",
+			label: "Area Spline Range Chart"
+		}, {
 			value: "bar",
 			label: "Bar Chart"
+		}, {
+			value: "boxplot",
+			label: "Boxplot Chart"
+		}, {
+			value: "bubble",
+			label: "Bubble Chart"
 		}, {
 			value: "column",
 			label: "Column Chart"
 		}, {
+			value: "columnrange",
+			label: "Column Range Chart"
+		}, {
+			value: "errorbar",
+			label: "Error Bar Chart"
+		}, {
+			value: "funnel",
+			label: "Funnel Chart"
+		}, {
+			value: "gauge",
+			label: "Gauge Chart"
+		}, {
+			value: "heatmap",
+			label: "Heatmap Chart"
+		}, {
 			value: "line",
 			label: "Line Chart"
 		}, {
-			value: "stepLine",
-			label: "Step Line Chart"
-		}, {
-			value: "spline",
-			label: "Spline Chart"
-		}, {
-			value: "stepArea",
-			label: "Step Area Chart"
-		}, {
-			value: "splineArea",
-			label: "Spline Area Chart"
-		}, 
-
-		{
 			value: "pie",
 			label: "Pie Chart"
 		}, {
-			value: "doughnut",
-			label: "Doughnut Chart"
-		}, 
-		/*
-		{
-			value: "bubble",
-			label: "Bubble Chart"
-		}, 
-*/
-		{
+			value: "polygon",
+			label: "Polygon Chart"
+		}, {
+			value: "pyramid",
+			label: "Pyramid Chart"
+		},{
 			value: "scatter",
-			label: "Scatter Chart"
-		}, 
-		{
-			value: "stackedColumn",
-			label: "Stacked Column Chart"
+			label: "scatter Chart"
+		},{
+			value: "series",
+			label: "Series Chart"
 		}, {
-			value: "stackedColumn100",
-			label: "Stacked Column 100 Chart"
+			value: "solidgauge",
+			label: "solidgauge Chart"
 		}, {
-			value: "stackedArea",
-			label: "Stacked Area Chart"
+			value: "spline",
+			label: "spline Chart"
 		}, {
-			value: "stackedArea100",
-			label: "Stacked Area 100 Chart"
+			value: "treemap",
+			label: "Treemap Chart"
 		}, {
-			value: "stackedBar",
-			label: "Stacked Bar Chart"
-		}, {
-			value: "stackedBar100",
-			label: "Stacked Bar 100 Chart"
-		} 
-/*		{
-			value: "rangeColumn",
-			label: "Range Column Chart"
-		}, 
-
-		{
-			value: "rangeBar",
-			label: "Range Bar Chart"
-		}, {
-			value: "rangeArea",
-			label: "Range Area Chart"
-		}, {
-			value: "rangeSplineArea",
-			label: "Range Spline Area Chart"
-		}, {
-			value: "ohlc",
-			label: "OHLC Chart"
-		}, {
-			value: "candlestick",
-			label: "Candle Stick Chart"
+			value: "waterfall",
+			label: "waterfall Chart"
 		}
-*/
 	]
