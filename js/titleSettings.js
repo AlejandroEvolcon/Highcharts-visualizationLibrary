@@ -10,12 +10,15 @@ var titleSettings = {
 							defaultValue: "This Chart Title",
 							ref: "settings.titles.title"
 						},
+
 						customizeTitle : {
 							ref : "field.title.show",
 							type : "boolean",
 							label : "Customize Title",
 							defaultValue : false
 						},
+
+						// All the below options will be showed only if the Customize Title switch is true
 						AlignDropDown: {
 							type: "string",
 							component: "dropdown",
@@ -192,5 +195,5 @@ var titleSettings = {
 						}
 					}
 
-	
+
 };
