@@ -5,11 +5,14 @@ define( [
 			"./js/highcharts",										// Highcharts library
 			"./js/DataHelper",										// Function to make the data series from the qMatrix
 			"./js/DropdownList",									// All variable used in the dropdown selection fields
+			"./js/plotOptionChartMapping",							// Mapping between charts and chart options
 			"./js/ChartProperties",									// Functions to fill up the Chart JSON sections
 			"./js/legendSettings",									// Variable with the Legend settings section
 			"./js/chartOptionsSettings",							// Variable with the Chart options settings
 			"./js/titleSettings",									// Variable with the title option settings
-			"./js/GeneralSettings"									// Variable with the General settings
+			"./js/GeneralSettings",									// Variable with the General settings
+			"./js/plotOptionSettings"								// Variable with the plotOption settings
+
 		], function ( qlik, template ) {
 		"use strict";
 		
@@ -69,9 +72,13 @@ define( [
 				/*
 					Legend TAB Settings will show all the options if the lable will be enabled.
 				*/
-				legend : {}
-					
-				
+				legend : {},
+
+				/*
+					plotOption TAB
+				*/
+				plotOptions : {}
+						
 			}
 		}
 	};	
@@ -81,6 +88,7 @@ define( [
 	me.definition.items.title = titleSettings;
 	me.definition.items.chart = chartOptionSettings;
 	me.definition.items.legend = legendSettings;
+	me.definition.items.plotOptions = plotOptionSettings;
 	
 
 	// Get Engine API app for Selections

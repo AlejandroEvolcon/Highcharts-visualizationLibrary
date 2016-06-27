@@ -1,3 +1,41 @@
+var dashStyle =[
+					{
+						value: "Solid",
+						label: "Solid"
+					}, {
+						value: "ShortDash",
+						label: "Short Dash"
+					}, {
+						value: "ShortDot",
+						label: "Short Dot"
+					} ,	{
+						value: "ShortDashDot",
+						label: "Short Dash Dot"
+					}, {
+						value: "ShortDashDotDot",
+						label: "Short Dash Dot Dot"
+					}, {
+						value: "Dot",
+						label: "Dot"
+					}, 	{
+						value: "Dash",
+						label: "Dash"
+					}, {
+						value: "LongDash",
+						label: "Long Dash"
+					}, {
+						value: "DashDot",
+						label: "Dash Dot"
+					} ,	{
+						value: "Long Dash Dot",
+						label: "Short Dash Dot"
+					}, {
+						value: "Long Dash Dot Dot",
+						label: "Short Dash Dot Dot"
+					}
+		]
+
+
 var alignOption = [
 					{
 						value: "center",
