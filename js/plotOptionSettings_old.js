@@ -1,32 +1,30 @@
 
-
-
 var plotOptionSettings = {
 
-    component: "expandable-items",
-    label: "Plot Option",
-    items:{
-    	GeneralSettings: {
-			type: "items",
-			label: "General Settings",
-		    items : {
-				allowPointSelectCheckbox: {
-					type: "boolean",
-					component: "switch",
-					label: "Allow Point Select",
-					ref: "settings.plotOptions.allowPointSelect",
-                         options: [{
-                                    value: true,
-                                    label: "On"
-								}, {
-                                    value: false,
-                                    label: "Off"
-						        }],
-					defaultValue: false,										
-					show : function(data) {			// Showed for all Chart but gauge and solidgaude
-						return ( PlotOptionChartMap[data.settings.charts.type].indexOf('allowPointSelect') != -1);
-					}
-				},
+					type: "items",
+					label: "Plot Option",
+					items : {
+						myNewHeader: {
+							type: "items",
+            				label: "My header, containing text box",
+            				items : {
+						allowPointSelectCheckbox: {
+							type: "boolean",
+							component: "switch",
+							label: "Allow Point Select",
+							ref: "settings.plotOptions.allowPointSelect",
+                            options: [{
+                                        value: true,
+                                        label: "On"
+									}, {
+                                       value: false,
+                                        label: "Off"
+							        }],
+							defaultValue: false,										
+							show : function(data) {			// Showed for all Chart but gauge and solidgaude
+								return ( PlotOptionChartMap[data.settings.charts.type].indexOf('allowPointSelect') != -1);
+							}
+						},
 						animationCheckbox: {
 							type: "boolean",
 							component: "switch",
@@ -129,13 +127,7 @@ var plotOptionSettings = {
 							show : function(data) {
 								return ( PlotOptionChartMap[data.settings.charts.type].indexOf('dashStyle') != -1);
 							}
-						}
-		    }
-		},
-		dataLables : {
-			type: "items",
-			label: "Data Lables",
-			    items : {
+						},
 						dataLabelsAlignDropDown: {
 							type: "string",
 							component: "dropdown",
@@ -224,7 +216,11 @@ var plotOptionSettings = {
 								return ( PlotOptionChartMap[data.settings.charts.type].indexOf('dataLabels') != -1);
 							}
 						}
-				}
-		}
-	}
+
+					}
+
+}
+}
+
 };
+
