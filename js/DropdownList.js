@@ -157,10 +157,10 @@ var chartList =
 		},  {
 			value: "pyramid",
 			label: "Pyramid Chart"
-		}, */{
+		}, {
 			value: "scatter",
 			label: "scatter Chart"
-		}, /*{
+		}, {
 			value: "series",
 			label: "Series Chart"
 		},  {
