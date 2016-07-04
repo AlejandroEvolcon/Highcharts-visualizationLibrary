@@ -7,15 +7,15 @@ define( [
 			"./js/DropdownList",									// All variable used in the dropdown selection fields
 			"./js/plotOptionChartMapping",							// Mapping between charts and chart options
 			"./js/ChartProperties",									// Functions to fill up the Chart JSON sections
-			"./js/legendSettings",									// Variable with the Legend settings section
-			"./js/chartOptionsSettings",							// Variable with the Chart options settings
-			"./js/titleSettings",									// Variable with the title option settings
-			"./js/GeneralSettings",									// Variable with the General settings
-			"./js/plotOptionSettings"								// Variable with the plotOption settings
+			"./js/settings/legendSettings",							// Variable with the Legend settings section
+			"./js/settings/chartOptionsSettings",					// Variable with the Chart options settings
+			"./js/settings/titleSettings",							// Variable with the title option settings
+			"./js/settings/GeneralSettings",						// Variable with the General settings
+			"./js/settings/plotOptionSettings"						// Variable with the plotOption settings
 
 		], function ( qlik, template ) {
 		"use strict";
-		
+
 	var me = {
 		initialProperties: {
 			version: 1.2,
@@ -28,6 +28,7 @@ define( [
 				}]
 			}
 		},
+
 
 
 		definition: {
@@ -118,7 +119,7 @@ define( [
 			// it's made up of different sections. Each section has a corresponding TAB settings in a dedicated file
 		
 			var mychart =  {
-				    //    colors : layout.settings.colorsArray,
+				       colors : ['#7cb5ec', '#434348', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1'],
 
 				    	/*
 							Highchart by default puts a credits label in the lower right corner of the chart. This can be changed using these options.
@@ -167,42 +168,29 @@ define( [
 				        */
 			            legend: {},
 
-				        plotOptions: {
-				            pie: {
-				                allowPointSelect: true,
-				                cursor: 'pointer',
-				                dataLabels: {
-				                    enabled: true,
-				                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-				                    style: {
-				                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-				                    }
-				                }
-				            }
-				        },
+				        plotOptions: {},
 
 			      		// Data Section
 				        series: [{
 				            name: 'Brands',
 				            colorByPoint: true,
+				            type: "line",
+
 				            data: []
 				        }]
         
 					};
 
-					// In this section external function will be called in ordetr to fill
-					//  the JSON file parts
-
-					var titles = makeTitle(layout.settings.titles);
-
 					// Fill the Title section
-					mychart.title = titles[0];
+					mychart.title = makeTitle(layout.settings.titles);
 					// Fill the subtitle section
-					mychart.subtitles = titles[1];
+					mychart.subtitles = makeSubitle(layout.settings.subtitle);
 					// Fill the cart section
 					mychart.chart = makeChart(layout.settings.charts);
 					// Fill the legend section
 					mychart.legend = makeLegend(layout.settings.legend);
+					// Fille the plotOption section
+					mychart.plotOptions = makePlotOptions(layout.settings.plotOptions, layout.settings.charts.type);
 					
 
 
@@ -219,22 +207,11 @@ define( [
 
                 var newDataMatrix=[];
 
-                newDataMatrix = singleDimension(layout,dimensionLabels,measureLabels,self);
-/*
-                if((measureLabels.length > 1) &&(layout.secondaxis))
-                	newDataMatrix =  doubleMeasure (layout,dimensionLabels,measureLabels,self);
-                else {
+                newDataMatrix = singleDimension(layout,dimensionLabels,measureLabels,self);		
 
-	                if (dimensionLabels.length > 1)
-	                	newDataMatrix = doubleDimension (layout,dimensionLabels,measureLabels,self);
-	                else 
-	                		newDataMatrix = singleDimension(layout,dimensionLabels,measureLabels,self);
-                }
-
-*/				
-
-			mychart.series[0].data = newDataMatrix;
-			console.log(mychart);
+			//mychart.series[0].data = newDataMatrix;
+			mychart.series = newDataMatrix;
+		//	console.log(mychart);
 			
 			$('#'+layout.qInfo.qId).highcharts(mychart);
 		

@@ -8,6 +8,7 @@
 	"homepage": "https://github.com/expovin",
 	"keywords": "qlik-sense, visualization",
 	"license": "",
+	"preview" : "highcharts-logo.png",
 	"repository": "https://github.com/expovin/Highcharts-visualizationLibrary",
 	"dependencies": {
 		"qlik-sense": ">=3.0.x"

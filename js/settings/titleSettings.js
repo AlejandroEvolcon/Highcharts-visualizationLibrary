@@ -1,7 +1,7 @@
-var titleSettings = {
+var Title = {
 
 					type: "items",
-					label: "In Chart Title and Subtitle",
+					label: "Title",
 					items : {
 						inChartTitle: {
 							type: "string",
@@ -107,22 +107,27 @@ var titleSettings = {
 							show : function(data) {
 								return data.field && data.field.title && data.field.title.show;
 							}
-						},
+						}
+					}
 
+				};
 
-						// Subtitle Section
+var Subtitle = {
+					type: "items",
+					label: "Subtitle",
+					items : {	
 						inChartSubTitle: {
 							type: "string",
 							expression: "optional",
 							label: "In Chart Subtitle",
 							defaultValue: "This Chart Subtitle",
-							ref: "settings.titles.subutitle.title"
+							ref: "settings.subtitle.title"
 						},
 						customizeSubTitle : {
-							ref : "field.subtitle.show",
 							type : "boolean",
 							label : "Customize Subtitle",
-							defaultValue : false
+							defaultValue : false,
+							ref : "field.subtitle.show"
 						},
 						SubtitleAlignDropDown: {
 							type: "string",
@@ -130,7 +135,7 @@ var titleSettings = {
 							label: "Align",
 							options: alignOption,
 							defaultValue: "center",
-							ref: "settings.titles.subutitle.align",
+							ref: "settings.subtitle.align",
 							show : function(data) {
 								return data.field && data.field.subtitle && data.field.subtitle.show;
 							}
@@ -141,7 +146,7 @@ var titleSettings = {
 							label: "Vertical Align",
 							options: valignOption,
 							defaultValue: "top",
-							ref: "settings.titles.subutitle.valign",
+							ref: "settings.subtitle.valign",
 							show : function(data) {
 								return data.field && data.field.subtitle && data.field.subtitle.show;
 							}
@@ -150,7 +155,7 @@ var titleSettings = {
 							type: "boolean",
 							component: "switch",
 							label: "Floating",
-							ref: "settings.titles.subutitle.floating",
+							ref: "settings.subtitle.floating",
                             options: [{
                                         value: true,
                                         label: "On"
@@ -168,7 +173,7 @@ var titleSettings = {
 							expression: "optional",
 							label: "Color",
 							defaultValue: "#333333",
-							ref: "settings.titles.style.subutitle.color",
+							ref: "settings.subtitle.style.color",
 							show : function(data) {
 								return data.field && data.field.subtitle && data.field.subtitle.show;
 							}
@@ -178,7 +183,7 @@ var titleSettings = {
 							expression: "optional",
 							label: "Font",
 							defaultValue: "18px",
-							ref: "settings.titles.style.subutitle.fontsize",
+							ref: "settings.subtitle.style.fontsize",
 							show : function(data) {
 								return data.field && data.field.subtitle && data.field.subtitle.show;
 							}
@@ -188,12 +193,25 @@ var titleSettings = {
 							expression: "optional",
 							label: "x",
 							defaultValue: 0,
-							ref: "settings.titles.subutitle.x",
+							ref: "settings.subtitle.x",
 							show : function(data) {
 								return data.field && data.field.subtitle && data.field.subtitle.show;
 							}
 						}
 					}
 
-
 };
+
+// Questa è la sezione di mapping dell'intera Plot Option
+var titleSettings = {
+
+    component: "expandable-items",
+    label: "Title and Subtitle",
+    items:{
+    	Title: { },
+		Subtitle : {}
+	}
+};
+
+titleSettings.items.Title=Title;
+titleSettings.items.Subtitle=Subtitle;

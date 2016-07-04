@@ -31,6 +31,17 @@ var legendSettings = {
 								return data.settings && data.settings.legend && data.settings.legend.enable;
 							}
 						},
+						VAlignDropDown: {
+							type: "string",
+							component: "dropdown",
+							label: "Vertical Align",
+							options: valignOption,
+							defaultValue: "bottom",
+							ref: "settings.legend.verticalAlign",
+							show : function(data) {
+								return data.settings && data.settings.legend && data.settings.legend.enable;
+							}
+						},
 						backgroundColorLegend: {
 							type: "string",
 							expression: "optional",
@@ -163,7 +174,7 @@ var legendSettings = {
 							expression: "optional",
 							label: "Item Font Size",
 							defaultValue: "12px",
-							ref: "settings.legend.style.fontSize",
+							ref: "settings.legend.title.style.fontSize",
 							show : function(data) {
 								return data.settings && data.settings.legend && data.settings.legend.enable;
 							}
@@ -173,16 +184,17 @@ var legendSettings = {
 							expression: "optional",
 							label: "Item Font Weight",
 							defaultValue: "bold",
-							ref: "settings.legend.style.fontWeight",
+							ref: "settings.legend.title.style.fontWeight",
 							show : function(data) {
 								return data.settings && data.settings.legend && data.settings.legend.enable;
 							}
 						},
 						LayoutLegend: {
 							type: "string",
-							expression: "optional",
+							component: "dropdown",
 							label: "Layout",
-							defaultValue: "horizontal",
+							defaultValue: 'horizontal',
+							options: Layout,
 							ref: "settings.legend.layout",
 							show : function(data) {
 								return data.settings && data.settings.legend && data.settings.legend.enable;
